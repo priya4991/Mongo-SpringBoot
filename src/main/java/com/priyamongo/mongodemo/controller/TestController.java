@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +24,12 @@ public class TestController {
 
     @GetMapping
     public List<TestModel> getAll() {
-        List<TestModel> res =  testRepo.findAll();
-        return res;
+        return testRepo.findAll();
+    }
+
+    @GetMapping("/{nid}")
+    public List<TestModel> getData(@PathVariable(name = "nid") final long nid) {
+        return testRepo.findAllByNid(nid);
     }
 
     @PostMapping
@@ -32,5 +38,10 @@ public class TestController {
         @RequestBody TestModel data
     ) {
         testRepo.save(data);
+    }
+
+    @DeleteMapping
+    public void deleteAll() {
+        testRepo.deleteAll();
     }
 }

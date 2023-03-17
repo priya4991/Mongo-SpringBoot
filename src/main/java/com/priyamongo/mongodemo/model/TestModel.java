@@ -10,13 +10,16 @@ import lombok.Data;
 @Document(collection = "test-data")
 public class TestModel {
     @Id
-    private Long id;
+    private String id;
+
+    @Field
+    private Long nid;
 
     @Field
     private String name;
 
     @Field
-    private int number;
+    private Long number;
 
     @Field
     private String address;
