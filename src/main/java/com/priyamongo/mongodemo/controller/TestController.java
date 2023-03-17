@@ -1,8 +1,10 @@
 package com.priyamongo.mongodemo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.query.StringBasedAggregation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,9 +29,9 @@ public class TestController {
         return testRepo.findAll();
     }
 
-    @GetMapping("/{nid}")
-    public List<TestModel> getData(@PathVariable(name = "nid") final long nid) {
-        return testRepo.findAllByNid(nid);
+    @GetMapping("/{id}")
+    public Optional<TestModel> getData(@PathVariable(name = "id") final String id) {
+        return testRepo.findById(id);
     }
 
     @PostMapping

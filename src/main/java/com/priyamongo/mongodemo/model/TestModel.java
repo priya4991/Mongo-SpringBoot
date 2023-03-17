@@ -13,14 +13,11 @@ public class TestModel {
     private String id;
 
     @Field
-    private Long nid;
+    private String taxableEntityId;
 
     @Field
-    private String name;
+    private String incomeSourceId;
 
     @Field
-    private Long number;
-
-    @Field
-    private String address;
+    private int version;
 }

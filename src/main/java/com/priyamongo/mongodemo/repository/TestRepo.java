@@ -7,5 +7,5 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface TestRepo extends MongoRepository<TestModel, String> {
-    public List<TestModel> findAllByNid(Long nid);
+    
 }
